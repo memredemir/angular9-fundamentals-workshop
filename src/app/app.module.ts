@@ -8,12 +8,16 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
 import { HomeComponent } from './home/home.component';
 import { CoursesComponent } from './courses/courses.component';
+import { FormsModule } from '@angular/forms';
+import { CoursesService } from './shared/services/courses.service';
+import { LessonsService } from './shared/services/lessons.service';
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     MaterialModule,
     HttpClientModule
   ],
@@ -22,7 +26,10 @@ import { CoursesComponent } from './courses/courses.component';
     HomeComponent,
     CoursesComponent
   ],
-  providers: [],
+  providers: [
+    CoursesService,
+    LessonsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
