@@ -4,13 +4,13 @@ import { CoursesService } from '../shared/services/courses.service';
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.scss']
+  styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent implements OnInit {
   selectedCourse = null;
   courses = null;
 
-  constructor(private coursesService: CoursesService) { }
+  constructor(private coursesService: CoursesService) {}
 
   ngOnInit(): void {
     this.resetSelectedCourse();
@@ -23,7 +23,7 @@ export class CoursesComponent implements OnInit {
       title: '',
       description: '',
       percentComplete: 0,
-      favorite: false
+      favorite: false,
     };
 
     this.selectedCourse = emptyCourse;
@@ -34,31 +34,29 @@ export class CoursesComponent implements OnInit {
   }
 
   deleteCourse(id) {
-    this.coursesService.delete(id)
-      .subscribe(result => this.refreshCourses());
+    this.coursesService.delete(id).subscribe((result) => this.refreshCourses());
   }
-
 
   cancel() {
     this.resetSelectedCourse();
   }
 
   saveCourse(course) {
-    if(course.id){
-      this.coursesService.update(course)
-      .subscribe(result => this.refreshCourses());
-    }
-    else{
-      this.coursesService.create(course)
-        .subscribe(result => this.refreshCourses());
+    if (course.id) {
+      this.coursesService
+        .update(course)
+        .subscribe((result) => this.refreshCourses());
+    } else {
+      this.coursesService
+        .create(course)
+        .subscribe((result) => this.refreshCourses());
     }
   }
 
   loadCourses() {
-    this.coursesService.all()
-      .subscribe(courses => {
-        this.courses = courses;
-      });
+    this.coursesService.all().subscribe((courses) => {
+      this.courses = courses;
+    });
   }
 
   refreshCourses() {

@@ -1,0 +1,6 @@
+<mat-list>
+    <mat-list-item *ngFor="let course of courseLessons" 
+    (click)="selected.emit(course)">
+        <h3>{{course.title}}</h3>
+    </mat-list-item>
+</mat-list>
